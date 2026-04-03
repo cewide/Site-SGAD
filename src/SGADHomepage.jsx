@@ -63,54 +63,16 @@ function FadeIn({ children, className = "", delay = 0 }) {
 }
 
 /* ───────────────────── logo ───────────────────── */
-function SGADLogo({ size = 36 }) {
-  const id = "sgad_" + size;
+function SGADLogo({ size = 36, className = "" }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="2" width="116" height="116" rx="28" fill={`url(#${id}_bg)`} />
-      <rect x="2" y="2" width="116" height="116" rx="28" fill={`url(#${id}_shine)`} />
-      <rect
-        x="6"
-        y="6"
-        width="108"
-        height="108"
-        rx="24"
-        stroke="rgba(255,255,255,0.15)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <rect x="26" y="28" width="68" height="64" rx="10" fill="white" />
-      <rect
-        x="26"
-        y="28"
-        width="68"
-        height="64"
-        rx="10"
-        stroke="rgba(0,0,0,0.06)"
-        strokeWidth="1"
-        fill="none"
-      />
-      <rect x="33" y="36" width="16" height="20" rx="4" fill={`url(#${id}_card)`} />
-      <rect x="33" y="60" width="16" height="24" rx="4" fill={`url(#${id}_card)`} />
-      <rect x="52" y="36" width="16" height="24" rx="4" fill={`url(#${id}_card)`} />
-      <rect x="71" y="36" width="16" height="48" rx="4" fill={`url(#${id}_card)`} />
-      <defs>
-        <linearGradient id={`${id}_bg`} x1="60" y1="0" x2="60" y2="120" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#60A5FA" />
-          <stop offset="0.5" stopColor="#3B82F6" />
-          <stop offset="1" stopColor="#2563EB" />
-        </linearGradient>
-        <linearGradient id={`${id}_shine`} x1="60" y1="0" x2="60" y2="120" gradientUnits="userSpaceOnUse">
-          <stop stopColor="white" stopOpacity="0.18" />
-          <stop offset="0.4" stopColor="white" stopOpacity="0" />
-          <stop offset="1" stopColor="black" stopOpacity="0.08" />
-        </linearGradient>
-        <linearGradient id={`${id}_card`} x1="50" y1="36" x2="50" y2="84" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#DBEAFE" />
-          <stop offset="1" stopColor="#BFDBFE" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <img
+      src="/logo-sgad.png"
+      alt="SGAD"
+      width={size}
+      height={size}
+      className={`shrink-0 object-contain select-none ${className}`}
+      draggable={false}
+    />
   );
 }
 
