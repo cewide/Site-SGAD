@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { ChevronDown, Check, ArrowRight, Menu, X } from "lucide-react";
+import { SGAD_SIGNUP_URL } from "./siteConfig.js";
 import logoSgad from "../assets/logo-sgad.png";
 import imgScrumban from "../assets/modules/scrumban.png";
 import imgHelpDesk from "../assets/modules/help-desk.png";
@@ -71,54 +72,114 @@ const modules = [
     name: "Scrumban",
     image: imgScrumban,
     desc: "Gestão híbrida Scrum + Kanban: dashboard de métricas e saúde do sprint, tarefas com prioridades e dependências, backlog, minhas tarefas, aprovações com histórico, sprints, status customizáveis, projetos, timesheet e timeline de produtividade.",
+    bullets: [
+      "Dashboard Scrumban com sprint, progresso e saúde do ciclo",
+      "Tarefas com prioridades, responsáveis e dependências",
+      "Backlog, planejamento e gestão de sprints",
+      "Minhas tarefas, aprovações e histórico rastreável",
+      "Projetos, atividades e estados do fluxo personalizáveis",
+      "Timesheet e timeline de produtividade",
+    ],
     color: "#3B82F6",
   },
   {
     name: "Help Desk",
     image: imgHelpDesk,
     desc: "Central de suporte com dashboard de tickets, TME/TMA e operadores; conversão de ticket em tarefa interna; categorias, SLAs, prioridades, escalonamento e permissões granulares por chamado.",
+    bullets: [
+      "Dashboard com tickets, TME/TMA, operadores e saúde operacional",
+      "Criação e gestão de tickets com categorias e prioridades",
+      "Conversão de ticket em tarefa interna (ordem de serviço)",
+      "SLAs, escalonamento e regras configuráveis",
+      "Permissões granulares por ticket (status, prioridade, categoria)",
+    ],
     color: "#8B5CF6",
   },
   {
     name: "WhatsApp Business",
     image: imgWhatsapp,
     desc: "API oficial META: inbox unificado, dashboard de atendimentos em tempo real, fluxos visuais (URA/chatbot), quatro algoritmos de fila, sentimento IA, pesquisa CSAT/NPS, ponte bidirecional, apoio interno ao operador e identificação LGPD por CNPJ.",
+    bullets: [
+      "Inbox unificado e dashboard de atendimentos em tempo real",
+      "Fluxos visuais (URA/chatbot), templates e integrações API",
+      "Quatro algoritmos de fila: menos ocupado, rodízio, prioridade, tempo ocioso",
+      "Análise de sentimento IA, CSAT/NPS e resumo automático",
+      "Ponte bidirecional e apoio interno invisível ao cliente",
+      "Identificação por CNPJ e aceite LGPD",
+    ],
     color: "#22C55E",
   },
   {
     name: "CRM Completo",
     image: imgCrm,
     desc: "Ciclo comercial completo: dashboard executivo, relatórios, leads com scoring, funil Kanban, oportunidades, contatos e empresas, produtos, propostas, clientes, atividades, campos personalizados, campanhas e consulta Serasa (até 500/mês).",
+    bullets: [
+      "Dashboard CRM, relatórios e resumo executivo",
+      "Leads com scoring, funil Kanban e oportunidades",
+      "Contatos, empresas, produtos/serviços e propostas",
+      "Clientes, atividades comerciais e campos personalizados",
+      "Campanhas, segmentação e consulta Serasa (até 500/mês)",
+    ],
     color: "#F59E0B",
   },
   {
     name: "Análises e Gamificação",
     image: imgGamificacao,
     desc: "Relatórios gerenciais, performance e feedback, visão por equipes, ranking de produtividade, badges, metas e desafios com acompanhamento em tempo real e feed social de atividades.",
+    bullets: [
+      "Relatórios gerenciais e visões de produtividade",
+      "Performance, feedback e visão por equipes",
+      "Ranking, badges, metas e desafios em tempo real",
+      "Feed de atividades e conquistas da equipe",
+    ],
     color: "#EC4899",
   },
   {
     name: "IA Nativa (Ad)",
     image: imgIaAd,
     desc: "Assistente SGAD: score de saúde operacional (0–100), monitoramento de tokens, chamadas e custo, insights sob demanda, atalhos operacionais, geração de fluxos por IA, resumos de Wiki e de atendimento.",
+    bullets: [
+      "Score de saúde operacional (0–100) e painel de consumo",
+      "Monitoramento de tokens, chamadas e custo estimado",
+      "Insights sob demanda e atalhos operacionais",
+      "Geração de fluxos de atendimento por IA",
+      "Resumos de Wiki e de atendimento automatizados",
+    ],
     color: "#06B6D4",
   },
   {
     name: "Comunicação",
     image: imgComunicacao,
     desc: "Mural interno com posts, curtidas, comentários e estatísticas (pode ser tela inicial); chat com grupos, tópicos, anexos e vínculo a tarefas/tickets; Wiki em Markdown com resumos por IA; notificações configuráveis.",
+    bullets: [
+      "Mural com posts, curtidas, comentários e estatísticas",
+      "Chat interno: grupos, tópicos, anexos e vínculo a tarefas/tickets",
+      "Wiki em Markdown com resumos por IA e permissões",
+      "Central de notificações configurável",
+    ],
     color: "#14B8A6",
   },
   {
     name: "Admin e Segurança",
     image: imgIaAd,
     desc: "Usuários, papéis e permissões granulares, dados da empresa, equipes, área de login customizável com branding, logs de auditoria, backups, SMTP e importação em massa com mapeamento, validação e processamento em background.",
+    bullets: [
+      "Usuários, papéis e permissões granulares",
+      "Dados da empresa, equipes e login customizável (branding)",
+      "Logs de auditoria, backups e SMTP",
+      "Importação em massa com mapeamento, validação e processamento em background",
+    ],
     color: "#6366F1",
   },
   {
     name: "Cadastro Central",
     image: imgCrm,
     desc: "Base única de clientes e endereços compartilhada entre Scrumban, suporte, WhatsApp e CRM — dados centralizados e histórico integrado aos demais módulos.",
+    bullets: [
+      "Clientes com dados completos e histórico integrado",
+      "Endereços vinculados e base única para todos os módulos",
+      "Compartilhamento nativo com Scrumban, suporte, WhatsApp e CRM",
+    ],
     color: "#F97316",
   },
 ];
@@ -208,7 +269,9 @@ function Navbar() {
             FAQ
           </a>
           <a
-            href="#cta-final"
+            href={SGAD_SIGNUP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:translate-y-px transition-all active:scale-95"
           >
             Teste Grátis
@@ -235,7 +298,9 @@ function Navbar() {
             FAQ
           </a>
           <a
-            href="#cta-final"
+            href={SGAD_SIGNUP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="mt-2 text-center px-5 py-3 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold"
           >
@@ -294,7 +359,9 @@ function Hero() {
         <FadeIn delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#cta-final"
+              href={SGAD_SIGNUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group px-8 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-lg shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all active:scale-95 flex items-center gap-2"
             >
               Comece Grátis
@@ -342,21 +409,34 @@ function ModuleDetailModal({ module, onClose }) {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
     };
   }, [module, onClose]);
 
-  if (!module || typeof document === "undefined") return null;
+  if (!module) return null;
 
-  return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center sm:p-6">
+  const overlay = (
+    <div
+      className="fixed inset-0 flex items-end justify-center p-4 sm:items-center sm:p-6"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 2147483646,
+        pointerEvents: "auto",
+      }}
+      role="presentation"
+    >
       <button
         type="button"
-        className="absolute inset-0 bg-slate-950/85 backdrop-blur-md cursor-default"
+        className="absolute inset-0 border-0 bg-slate-950/90 backdrop-blur-md"
+        style={{ cursor: "pointer" }}
         aria-label="Fechar detalhe do módulo"
         onClick={onClose}
       />
@@ -364,47 +444,58 @@ function ModuleDetailModal({ module, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="module-detail-title"
-        className="relative z-10 flex flex-col w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[min(90vh,880px)] sm:rounded-2xl rounded-t-2xl border border-white/10 bg-slate-900 shadow-2xl shadow-black/60 overflow-hidden"
+        className="relative flex max-h-[min(92vh,880px)] w-full max-w-4xl flex-col overflow-hidden rounded-t-2xl border border-white/10 bg-slate-900 text-white shadow-2xl sm:rounded-2xl"
+        style={{ zIndex: 1 }}
+        onClick={(e) => e.stopPropagation()}
       >
-        <div className="absolute top-0 left-0 right-0 h-1 z-20" style={{ backgroundColor: module.color }} aria-hidden />
+        <div className="absolute left-0 right-0 top-0 z-20 h-1" style={{ backgroundColor: module.color }} aria-hidden />
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/90 text-white border border-white/10 hover:bg-slate-700 transition-colors"
+          className="absolute right-3 top-3 z-30 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-slate-800 text-white transition-colors hover:bg-slate-700 sm:right-4 sm:top-4"
           aria-label="Fechar"
         >
           <X size={20} />
         </button>
 
-        <div className="overflow-y-auto flex-1 min-h-0 overscroll-contain pt-1">
-          <div className="relative w-full bg-slate-950 border-b border-white/[0.06]">
+        <div className="max-h-[inherit] min-h-0 flex-1 overflow-y-auto overscroll-contain">
+          <div className="border-b border-white/[0.06] bg-slate-950">
             <img
               src={module.image}
-              alt={`Interface do módulo ${module.name} no SGAD`}
-              className="w-full h-auto max-h-[min(50vh,420px)] sm:max-h-[min(55vh,480px)] object-contain object-top mx-auto block"
+              alt={`Captura do módulo ${module.name} no SGAD`}
+              width={1600}
+              height={900}
+              className="mx-auto block h-auto w-full max-h-[min(48vh,400px)] object-contain object-top sm:max-h-[min(52vh,480px)]"
               draggable={false}
             />
           </div>
-          <div className="p-6 sm:p-8 pb-8">
-            <h2 id="module-detail-title" className="text-2xl sm:text-3xl font-bold text-white mb-4 pr-12">
+          <div className="p-5 pb-6 sm:p-8">
+            <h2 id="module-detail-title" className="mb-3 pr-14 text-xl font-bold sm:text-2xl">
               {module.name}
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed">{module.desc}</p>
-            <p className="mt-6 text-sm text-slate-500 border-t border-white/[0.06] pt-6">
-              Captura de tela real do SGAD. Clique fora ou pressione Esc para fechar.
+            <p className="mb-5 text-sm leading-relaxed text-slate-400 sm:text-base">{module.desc}</p>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-400">Principais funcionalidades</p>
+            <ul className="list-inside list-disc space-y-2 text-sm text-slate-300 sm:text-base">
+              {module.bullets.map((item) => (
+                <li key={item} className="pl-1 marker:text-blue-500">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 border-t border-white/[0.06] pt-4 text-xs text-slate-500">
+              Clique no fundo escuro ou em Fechar para voltar à página.
             </p>
           </div>
         </div>
       </div>
-    </div>,
-    document.body
+    </div>
   );
+
+  if (typeof document === "undefined" || !document.body) return null;
+  return createPortal(overlay, document.body);
 }
 
-function Modules() {
-  const [detailModule, setDetailModule] = useState(null);
-  const closeDetail = useCallback(() => setDetailModule(null), []);
-
+function Modules({ onSelectModule }) {
   return (
     <section id="modulos" className="relative bg-slate-950 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-5">
@@ -418,19 +509,20 @@ function Modules() {
               Mais de 75 funcionalidades documentadas em um único ambiente. Um ticket vira tarefa, o WhatsApp alimenta o
               CRM e o Ad cruza dados de todos os módulos.
             </p>
-            <p className="mt-3 text-slate-500 text-sm">Clique em um módulo para ver a interface em destaque e o detalhamento.</p>
+            <p className="mt-3 text-slate-500 text-sm">
+              <strong className="font-semibold text-slate-400">Clique no cartão</strong> de um módulo (imagem ou texto) para
+              abrir o detalhe com a captura ampliada — não é o link &quot;Módulos&quot; do menu.
+            </p>
           </div>
         </FadeIn>
-
-        {detailModule && <ModuleDetailModal module={detailModule} onClose={closeDetail} />}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((m) => (
             <div key={m.name} className="h-full min-h-0">
               <button
                 type="button"
-                onClick={() => setDetailModule(m)}
-                className="group flex flex-col h-full w-full min-h-[280px] text-left rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 relative z-0"
+                onClick={() => onSelectModule(m)}
+                className="group relative z-0 flex min-h-[280px] w-full cursor-pointer touch-manipulation flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] text-left transition-all duration-300 hover:border-white/[0.15] hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.99]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-900/80 border-b border-white/[0.06] shrink-0">
                   <div className="absolute top-0 left-0 right-0 h-1 z-10" style={{ backgroundColor: m.color }} aria-hidden />
@@ -601,7 +693,9 @@ function Pricing() {
               </ul>
 
               <a
-                href="#cta-final"
+                href={SGAD_SIGNUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block w-full text-center px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-lg shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
               >
                 Começar Teste Grátis
@@ -695,7 +789,9 @@ function CTAFinal() {
 
         <FadeIn delay={0.3}>
           <a
-            href="#"
+            href={SGAD_SIGNUP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-lg shadow-2xl shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all active:scale-95"
           >
             Criar Minha Conta Grátis
@@ -756,6 +852,9 @@ function Footer() {
 
 /* ───────────────────── App ───────────────────── */
 export default function SGADHomepage() {
+  const [detailModule, setDetailModule] = useState(null);
+  const closeDetail = useCallback(() => setDetailModule(null), []);
+
   return (
     <div
       className="min-h-screen bg-slate-950 text-white"
@@ -763,12 +862,13 @@ export default function SGADHomepage() {
     >
       <Navbar />
       <Hero />
-      <Modules />
+      <Modules onSelectModule={setDetailModule} />
       <Differentials />
       <Pricing />
       <FAQ />
       <CTAFinal />
       <Footer />
+      {detailModule != null ? <ModuleDetailModal module={detailModule} onClose={closeDetail} /> : null}
     </div>
   );
 }
