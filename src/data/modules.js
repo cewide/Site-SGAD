@@ -2,8 +2,10 @@ import scrumban from "../assets/modules/scrumban.png";
 import helpDesk from "../assets/modules/help-desk.png";
 import whatsapp from "../assets/modules/whatsapp.png";
 import crm from "../assets/modules/crm.png";
+import cadastroCentral from "../assets/modules/cadastro-central.png";
 import gamificacao from "../assets/modules/gamificacao.png";
 import iaAd from "../assets/modules/ia-ad.png";
+import adminSeguranca from "../assets/modules/admin-seguranca.png";
 import comunicacao from "../assets/modules/comunicacao.png";
 
 export const MODULES = [
@@ -115,12 +117,13 @@ export const MODULES = [
     id: "admin",
     name: "Admin e Segurança",
     color: "#6366F1",
-    image: iaAd,
+    image: adminSeguranca,
     summary:
-      "Usuários, papéis, auditoria, backups, SMTP, importação em massa e personalização do login.",
+      "Gestão de equipes e membros, usuários, papéis, auditoria, backups, SMTP, importação e personalização do login.",
     bullets: [
+      "Gestão de equipes, líderes e membros com permissões",
       "Usuários, papéis e permissões granulares",
-      "Dados da empresa, equipes e branding no login",
+      "Dados da empresa e branding no login",
       "Logs de auditoria e backups",
       "SMTP e importação com validação em background",
     ],
@@ -129,7 +132,7 @@ export const MODULES = [
     id: "cadastro",
     name: "Cadastro Central",
     color: "#F97316",
-    image: crm,
+    image: cadastroCentral,
     summary: "Clientes e endereços numa base única para Scrumban, suporte, WhatsApp e CRM.",
     bullets: [
       "Cadastro de clientes com histórico integrado",

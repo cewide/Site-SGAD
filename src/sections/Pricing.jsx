@@ -22,13 +22,13 @@ export function Pricing() {
           <p className="mx-auto mt-4 max-w-xl text-lg text-slate-400">Compare com o custo de ferramentas separadas.</p>
         </div>
 
-        <div className="grid items-start gap-8 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-            <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-white">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch">
+          <div className="flex h-full min-h-[28rem] flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:min-h-[32rem] sm:p-8">
+            <h3 className="mb-6 flex shrink-0 items-center gap-2 text-lg font-bold text-white">
               <X className="text-red-400" size={20} />
               Ferramentas em separado
             </h3>
-            <ul className="divide-y divide-white/10">
+            <ul className="min-h-0 flex-1 divide-y divide-white/10">
               {COMPETITORS.map((c) => (
                 <li key={c.name} className="flex justify-between gap-4 py-3 text-sm">
                   <div>
@@ -42,29 +42,29 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex justify-between border-t border-white/10 pt-4 text-sm">
+            <div className="mt-6 flex shrink-0 justify-between border-t border-white/10 pt-4 text-sm">
               <span className="text-slate-400">Total mínimo estimado</span>
               <span className="text-xl font-bold text-red-400">R$ {fmt(total)}+/mês</span>
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 to-sky-500/10 p-6 sm:p-8">
+          <div className="relative flex h-full min-h-[28rem] flex-col overflow-hidden rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 to-sky-500/10 p-6 sm:min-h-[32rem] sm:p-8">
             <span className="absolute right-0 top-0 rounded-bl-xl bg-emerald-500 px-3 py-1 text-xs font-bold text-white">
               Recomendado
             </span>
-            <h3 className="mb-2 flex items-center gap-2 text-lg font-bold text-white">
+            <h3 className="mb-2 flex items-center gap-2 pr-24 text-lg font-bold text-white">
               <Check className="text-emerald-400" size={20} />
               SGAD — tudo incluído
             </h3>
-            <p className="mb-6 text-sm text-slate-400">9 módulos + IA + suporte</p>
+            <p className="mb-4 text-sm text-slate-400">9 módulos + IA + suporte</p>
             <div className="mb-2 flex items-baseline gap-1">
               <span className="text-5xl font-extrabold sm:text-6xl">R$ 97</span>
               <span className="text-slate-400">/mês</span>
             </div>
-            <p className="mb-8 text-sm font-medium text-emerald-400">
+            <p className="mb-6 text-sm font-medium text-emerald-400">
               Economize mais de R$ {fmt(total - 97)}/mês em relação a ferramentas separadas
             </p>
-            <ul className="mb-8 space-y-2 text-sm text-slate-300">
+            <ul className="mb-6 min-h-0 flex-1 space-y-2 text-sm text-slate-300">
               {[
                 "Todos os módulos",
                 "Assistente Ad (IA)",
@@ -78,15 +78,17 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
-            <a
-              href={SIGNUP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 py-4 text-center text-lg font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:shadow-emerald-500/40"
-            >
-              Começar teste grátis
-            </a>
-            <p className="mt-3 text-center text-xs text-slate-500">Sem cartão · Cancele quando quiser</p>
+            <div className="mt-auto shrink-0">
+              <a
+                href={SIGNUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 py-4 text-center text-lg font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:shadow-emerald-500/40"
+              >
+                Começar teste grátis
+              </a>
+              <p className="mt-3 text-center text-xs text-slate-500">Sem cartão · Cancele quando quiser</p>
+            </div>
           </div>
         </div>
         <p className="mt-8 text-center text-sm text-slate-500">
