@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown, Check, ArrowRight, Menu, X } from "lucide-react";
 import logoSgad from "../assets/logo-sgad.png";
 import imgScrumban from "../assets/modules/scrumban.png";
@@ -349,13 +350,13 @@ function ModuleDetailModal({ module, onClose }) {
     };
   }, [module, onClose]);
 
-  if (!module) return null;
+  if (!module || typeof document === "undefined") return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6">
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center sm:p-6">
       <button
         type="button"
-        className="absolute inset-0 bg-slate-950/85 backdrop-blur-md"
+        className="absolute inset-0 bg-slate-950/85 backdrop-blur-md cursor-default"
         aria-label="Fechar detalhe do módulo"
         onClick={onClose}
       />
@@ -363,7 +364,7 @@ function ModuleDetailModal({ module, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="module-detail-title"
-        className="relative flex flex-col w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[min(90vh,880px)] sm:rounded-2xl rounded-t-2xl border border-white/10 bg-slate-900 shadow-2xl shadow-black/60 overflow-hidden"
+        className="relative z-10 flex flex-col w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[min(90vh,880px)] sm:rounded-2xl rounded-t-2xl border border-white/10 bg-slate-900 shadow-2xl shadow-black/60 overflow-hidden"
       >
         <div className="absolute top-0 left-0 right-0 h-1 z-20" style={{ backgroundColor: module.color }} aria-hidden />
         <button
@@ -381,6 +382,7 @@ function ModuleDetailModal({ module, onClose }) {
               src={module.image}
               alt={`Interface do módulo ${module.name} no SGAD`}
               className="w-full h-auto max-h-[min(50vh,420px)] sm:max-h-[min(55vh,480px)] object-contain object-top mx-auto block"
+              draggable={false}
             />
           </div>
           <div className="p-6 sm:p-8 pb-8">
@@ -394,12 +396,14 @@ function ModuleDetailModal({ module, onClose }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
 function Modules() {
   const [detailModule, setDetailModule] = useState(null);
+  const closeDetail = useCallback(() => setDetailModule(null), []);
 
   return (
     <section id="modulos" className="relative bg-slate-950 py-24 sm:py-32">
@@ -418,17 +422,17 @@ function Modules() {
           </div>
         </FadeIn>
 
-        {detailModule && <ModuleDetailModal module={detailModule} onClose={() => setDetailModule(null)} />}
+        {detailModule && <ModuleDetailModal module={detailModule} onClose={closeDetail} />}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {modules.map((m, i) => (
-            <FadeIn key={m.name} delay={i * 0.06}>
+          {modules.map((m) => (
+            <div key={m.name} className="h-full min-h-0">
               <button
                 type="button"
                 onClick={() => setDetailModule(m)}
-                className="group flex flex-col h-full w-full text-left rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                className="group flex flex-col h-full w-full min-h-[280px] text-left rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 relative z-0"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-slate-900/80 border-b border-white/[0.06]">
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-900/80 border-b border-white/[0.06] shrink-0">
                   <div className="absolute top-0 left-0 right-0 h-1 z-10" style={{ backgroundColor: m.color }} aria-hidden />
                   <img
                     src={m.image}
@@ -436,12 +440,13 @@ function Modules() {
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     loading="lazy"
                     decoding="async"
+                    draggable={false}
                   />
-                  <span className="absolute bottom-2 right-2 px-2 py-1 rounded-md bg-slate-950/75 text-slate-200 text-xs font-medium border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <span className="absolute bottom-2 right-2 px-2 py-1 rounded-md bg-slate-950/75 text-slate-200 text-xs font-medium border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
                     Ver detalhes
                   </span>
                 </div>
-                <div className="p-5 sm:p-6 flex flex-col flex-1">
+                <div className="p-5 sm:p-6 flex flex-col flex-1 min-h-0">
                   <h3 className="text-white font-bold text-lg mb-2 group-hover:text-blue-200 transition-colors">{m.name}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed flex-1 line-clamp-4">{m.desc}</p>
                   <span className="mt-4 text-sm font-semibold text-blue-400 group-hover:text-blue-300 inline-flex items-center gap-1">
@@ -450,7 +455,7 @@ function Modules() {
                   </span>
                 </div>
               </button>
-            </FadeIn>
+            </div>
           ))}
         </div>
 
