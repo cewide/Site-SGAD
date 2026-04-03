@@ -34,11 +34,12 @@ export const FAQS = [
   },
 ];
 
+/** icon: chave para o mapa de ícones Lucide em Differentials.jsx */
 export const DIFFERENTIALS = [
-  { title: "Tudo em um", text: "Nove módulos nativos. Menos ferramentas soltas para integrar." },
-  { title: "IA nativa (Ad)", text: "Insights, fluxos, sentimento e resumos sem custo extra de “add-on”." },
-  { title: "R$ 97/mês", text: "Pacote completo por menos do que muitas ferramentas cobram sozinhas." },
-  { title: "Integração real", text: "Ticket vira tarefa; WhatsApp alimenta o CRM; dados ligados de verdade." },
-  { title: "Segurança", text: "LGPD, auditoria, permissões finas e backups." },
-  { title: "Gamificação", text: "Rankings, badges e metas para engajar a equipe." },
+  { icon: "layers", title: "Tudo em um", text: "Nove módulos nativos. Menos ferramentas soltas para integrar." },
+  { icon: "brain", title: "IA nativa (Ad)", text: "Insights, fluxos, sentimento e resumos sem custo extra de “add-on”." },
+  { icon: "dollar", title: "R$ 97/mês", text: "Pacote completo por menos do que muitas ferramentas cobram sozinhas." },
+  { icon: "zap", title: "Integração real", text: "Ticket vira tarefa; WhatsApp alimenta o CRM; dados ligados de verdade." },
+  { icon: "shield", title: "Segurança", text: "LGPD, auditoria, permissões finas e backups." },
+  { icon: "trophy", title: "Gamificação", text: "Rankings, badges e metas para engajar a equipe." },
 ];

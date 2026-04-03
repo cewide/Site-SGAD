@@ -4,4 +4,4 @@
  */
 export const SIGNUP_URL =
   (import.meta.env.VITE_SGAD_SIGNUP_URL && String(import.meta.env.VITE_SGAD_SIGNUP_URL).trim()) ||
-  "https://app.sgad.com.br/cadastro";
+  "https://sgad.aefsoftwares.com.br/usuarios";
