@@ -1,5 +1,5 @@
-import SGADHomepage from "./SGADHomepage.jsx";
+import Landing from "./Landing.jsx";
 
 export default function App() {
-  return <SGADHomepage />;
+  return <Landing />;
 }
