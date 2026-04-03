@@ -1,27 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  LayoutDashboard,
-  Headphones,
-  MessageCircle,
-  Briefcase,
-  BarChart3,
-  Bot,
-  MessagesSquare,
-  Settings,
-  Database,
-  ChevronDown,
-  Check,
-  ArrowRight,
-  Zap,
-  Shield,
-  Brain,
-  DollarSign,
-  Menu,
-  X,
-  Layers,
-  Sparkles,
-  Trophy,
-} from "lucide-react";
+import { ChevronDown, Check, ArrowRight, Menu, X } from "lucide-react";
+import logoSgad from "../assets/logo-sgad.png";
+import imgScrumban from "../assets/modules/scrumban.png";
+import imgHelpDesk from "../assets/modules/help-desk.png";
+import imgWhatsapp from "../assets/modules/whatsapp.png";
+import imgCrm from "../assets/modules/crm.png";
+import imgGamificacao from "../assets/modules/gamificacao.png";
+import imgIaAd from "../assets/modules/ia-ad.png";
+import imgComunicacao from "../assets/modules/comunicacao.png";
 
 /* ───────────────────── helpers ───────────────────── */
 function useInView(threshold = 0.15) {
@@ -66,70 +52,72 @@ function FadeIn({ children, className = "", delay = 0 }) {
 function SGADLogo({ size = 36, className = "" }) {
   return (
     <img
-      src="/logo-sgad.png"
+      src={logoSgad}
       alt="SGAD"
       width={size}
       height={size}
       className={`shrink-0 object-contain select-none ${className}`}
       draggable={false}
+      decoding="async"
     />
   );
 }
 
 /* ───────────────────── data ───────────────────── */
+/* Imagens dos módulos: 7 screenshots + reutilização alinhada ao ecossistema (doc. Funcionalidades SGAD v1.0) */
 const modules = [
   {
-    icon: LayoutDashboard,
     name: "Scrumban",
-    desc: "Gerencie projetos com a agilidade do Scrum e a flexibilidade do Kanban em um só lugar.",
+    image: imgScrumban,
+    desc: "Gestão híbrida Scrum + Kanban: dashboard de métricas e saúde do sprint, tarefas com prioridades e dependências, backlog, minhas tarefas, aprovações com histórico, sprints, status customizáveis, projetos, timesheet e timeline de produtividade.",
     color: "#3B82F6",
   },
   {
-    icon: Headphones,
     name: "Help Desk",
-    desc: "Atenda seus clientes com SLA, tickets inteligentes e conversão automática em tarefas.",
+    image: imgHelpDesk,
+    desc: "Central de suporte com dashboard de tickets, TME/TMA e operadores; conversão de ticket em tarefa interna; categorias, SLAs, prioridades, escalonamento e permissões granulares por chamado.",
     color: "#8B5CF6",
   },
   {
-    icon: MessageCircle,
     name: "WhatsApp Business",
-    desc: "Atendimento omnichannel com chatbot, filas inteligentes e análise de sentimento por IA.",
+    image: imgWhatsapp,
+    desc: "API oficial META: inbox unificado, dashboard de atendimentos em tempo real, fluxos visuais (URA/chatbot), quatro algoritmos de fila, sentimento IA, pesquisa CSAT/NPS, ponte bidirecional, apoio interno ao operador e identificação LGPD por CNPJ.",
     color: "#22C55E",
   },
   {
-    icon: Briefcase,
     name: "CRM Completo",
-    desc: "Pipeline visual, propostas, campanhas e consulta Serasa para fechar mais negócios.",
+    image: imgCrm,
+    desc: "Ciclo comercial completo: dashboard executivo, relatórios, leads com scoring, funil Kanban, oportunidades, contatos e empresas, produtos, propostas, clientes, atividades, campos personalizados, campanhas e consulta Serasa (até 500/mês).",
     color: "#F59E0B",
   },
   {
-    icon: BarChart3,
     name: "Análises e Gamificação",
-    desc: "Rankings, badges, metas e desafios que transformam produtividade em engajamento real.",
+    image: imgGamificacao,
+    desc: "Relatórios gerenciais, performance e feedback, visão por equipes, ranking de produtividade, badges, metas e desafios com acompanhamento em tempo real e feed social de atividades.",
     color: "#EC4899",
   },
   {
-    icon: Bot,
     name: "IA Nativa (Ad)",
-    desc: "Assistente que gera fluxos, resume atendimentos, analisa sentimento e entrega insights.",
+    image: imgIaAd,
+    desc: "Assistente SGAD: score de saúde operacional (0–100), monitoramento de tokens, chamadas e custo, insights sob demanda, atalhos operacionais, geração de fluxos por IA, resumos de Wiki e de atendimento.",
     color: "#06B6D4",
   },
   {
-    icon: MessagesSquare,
     name: "Comunicação",
-    desc: "Chat interno, wiki com IA, mural de avisos e base de conhecimento para sua equipe.",
+    image: imgComunicacao,
+    desc: "Mural interno com posts, curtidas, comentários e estatísticas (pode ser tela inicial); chat com grupos, tópicos, anexos e vínculo a tarefas/tickets; Wiki em Markdown com resumos por IA; notificações configuráveis.",
     color: "#14B8A6",
   },
   {
-    icon: Settings,
     name: "Admin e Segurança",
-    desc: "Permissões granulares, logs de auditoria, backups e conformidade com LGPD.",
+    image: imgIaAd,
+    desc: "Usuários, papéis e permissões granulares, dados da empresa, equipes, área de login customizável com branding, logs de auditoria, backups, SMTP e importação em massa com mapeamento, validação e processamento em background.",
     color: "#6366F1",
   },
   {
-    icon: Database,
     name: "Cadastro Central",
-    desc: "Base única de clientes e contatos compartilhada entre todos os módulos.",
+    image: imgCrm,
+    desc: "Base única de clientes e endereços compartilhada entre Scrumban, suporte, WhatsApp e CRM — dados centralizados e histórico integrado aos demais módulos.",
     color: "#F97316",
   },
 ];
@@ -146,7 +134,7 @@ const competitors = [
 const faqs = [
   {
     q: "O SGAD substitui mesmo todas essas ferramentas?",
-    a: "Sim. O SGAD integra nativamente gestão de projetos, help desk, CRM, WhatsApp Business, IA e comunicação. Não é integração via API — é um sistema único onde tudo conversa de verdade.",
+    a: "Sim. O SGAD integra nativamente Scrumban, help desk, CRM, WhatsApp Business (API META), IA (Ad), comunicação, administração e cadastro central. Não é integração solta via API — é um sistema único onde tudo conversa de verdade.",
   },
   {
     q: "R$ 97/mês parece bom demais. Qual é o truque?",
@@ -171,12 +159,12 @@ const faqs = [
 ];
 
 const differentials = [
-  { icon: Layers, title: "Tudo em Um", desc: "9 módulos integrados nativamente. Nada de colar ferramentas separadas." },
-  { icon: Brain, title: "IA Nativa Inclusa", desc: "O assistente Ad analisa, resume, sugere e automatiza — sem custo extra." },
-  { icon: DollarSign, title: "R$ 97/mês. Só isso.", desc: "Todos os módulos por menos do que você paga em uma só ferramenta." },
-  { icon: Zap, title: "Integração Real", desc: "Ticket vira tarefa. Lead do WhatsApp alimenta o CRM. Tudo conectado." },
-  { icon: Shield, title: "Seguro e Compliant", desc: "LGPD, logs de auditoria, permissões granulares e backups automáticos." },
-  { icon: Trophy, title: "Gamificação", desc: "Rankings, badges e metas que engajam sua equipe de verdade." },
+  { title: "Tudo em Um", desc: "9 módulos integrados nativamente. Nada de colar ferramentas separadas." },
+  { title: "IA Nativa Inclusa", desc: "O assistente Ad analisa, resume, sugere e automatiza — sem custo extra." },
+  { title: "R$ 97/mês. Só isso.", desc: "Todos os módulos por menos do que você paga em uma só ferramenta." },
+  { title: "Integração Real", desc: "Ticket vira tarefa. Lead do WhatsApp alimenta o CRM. Tudo conectado." },
+  { title: "Seguro e Compliant", desc: "LGPD, logs de auditoria, permissões granulares e backups automáticos." },
+  { title: "Gamificação", desc: "Rankings, badges e metas que engajam sua equipe de verdade." },
 ];
 
 /* ───────────────────── components ───────────────────── */
@@ -278,7 +266,7 @@ function Hero() {
       <div className="relative max-w-5xl mx-auto text-center px-5 py-32">
         <FadeIn>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-medium mb-8 backdrop-blur-sm">
-            <Sparkles size={14} />
+            <SGADLogo size={20} className="rounded-md" />
             Plataforma All-in-One com IA Nativa
           </div>
         </FadeIn>
@@ -357,25 +345,31 @@ function Modules() {
               Tudo conectado. Tudo em um.
             </h2>
             <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-lg">
-              Cada módulo funciona sozinho e brilha junto. Um ticket vira tarefa. Um lead do WhatsApp alimenta o CRM. A
-              IA cruza tudo e entrega insights.
+              Mais de 75 funcionalidades documentadas em um único ambiente. Um ticket vira tarefa, o WhatsApp alimenta o
+              CRM e o Ad cruza dados de todos os módulos.
             </p>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((m, i) => (
             <FadeIn key={m.name} delay={i * 0.06}>
-              <div className="group relative p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
-                  style={{ background: `${m.color}18` }}
-                >
-                  <m.icon size={22} style={{ color: m.color }} />
+              <article className="group flex flex-col h-full rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300 overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-900/80 border-b border-white/[0.06]">
+                  <div className="absolute top-0 left-0 right-0 h-1 z-10" style={{ backgroundColor: m.color }} aria-hidden />
+                  <img
+                    src={m.image}
+                    alt={`Captura do módulo ${m.name} no SGAD`}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">{m.name}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{m.desc}</p>
-              </div>
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
+                  <h3 className="text-white font-bold text-lg mb-2">{m.name}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed flex-1">{m.desc}</p>
+                </div>
+              </article>
             </FadeIn>
           ))}
         </div>
@@ -417,8 +411,8 @@ function Differentials() {
           {differentials.map((d, i) => (
             <FadeIn key={d.title} delay={i * 0.07} className="flex">
               <div className="flex flex-col p-7 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-blue-500/20 transition-all group w-full">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover:bg-blue-500/15 transition-colors shrink-0">
-                  <d.icon size={22} className="text-blue-400" />
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover:bg-blue-500/15 transition-colors shrink-0 overflow-hidden">
+                  <SGADLogo size={28} className="rounded-lg" />
                 </div>
                 <h3 className="text-white font-bold text-lg mb-2">{d.title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed flex-1">{d.desc}</p>
@@ -594,7 +588,7 @@ function CTAFinal() {
       <div className="relative max-w-3xl mx-auto text-center px-5">
         <FadeIn>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-6">
-            <Zap size={14} />
+            <SGADLogo size={18} className="rounded-md" />
             Comece agora. É grátis.
           </div>
         </FadeIn>
