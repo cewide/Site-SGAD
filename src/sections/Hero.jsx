@@ -34,7 +34,7 @@ export function Hero() {
             href={SIGNUP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-emerald-500/25 transition hover:-translate-y-0.5 hover:shadow-emerald-500/40"
           >
             Comece grátis
             <ArrowRight size={20} />
@@ -48,7 +48,7 @@ export function Hero() {
         </div>
 
         <p className="mt-8 text-sm text-slate-500">
-          9 módulos por <span className="font-semibold text-orange-400">R$ 97/mês</span> · Sem fidelidade · Teste grátis
+          9 módulos por <span className="font-semibold text-emerald-400">R$ 97/mês</span> · Sem fidelidade · Teste grátis
         </p>
       </div>
     </section>

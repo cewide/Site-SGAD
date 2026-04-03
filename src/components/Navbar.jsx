@@ -45,7 +45,7 @@ export function Navbar() {
             href={SIGNUP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-1 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:shadow-orange-500/40"
+            className="ml-1 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:shadow-emerald-500/40"
           >
             Teste grátis
           </a>
@@ -74,7 +74,7 @@ export function Navbar() {
               href={SIGNUP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 py-3 text-center text-sm font-semibold text-white"
+              className="mt-2 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 py-3 text-center text-sm font-semibold text-white"
               onClick={() => setMenu(false)}
             >
               Teste grátis
