@@ -334,7 +334,73 @@ function Hero() {
   );
 }
 
+function ModuleDetailModal({ module, onClose }) {
+  useEffect(() => {
+    if (!module) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [module, onClose]);
+
+  if (!module) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-6">
+      <button
+        type="button"
+        className="absolute inset-0 bg-slate-950/85 backdrop-blur-md"
+        aria-label="Fechar detalhe do módulo"
+        onClick={onClose}
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="module-detail-title"
+        className="relative flex flex-col w-full sm:max-w-4xl max-h-[92vh] sm:max-h-[min(90vh,880px)] sm:rounded-2xl rounded-t-2xl border border-white/10 bg-slate-900 shadow-2xl shadow-black/60 overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 right-0 h-1 z-20" style={{ backgroundColor: module.color }} aria-hidden />
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/90 text-white border border-white/10 hover:bg-slate-700 transition-colors"
+          aria-label="Fechar"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="overflow-y-auto flex-1 min-h-0 overscroll-contain pt-1">
+          <div className="relative w-full bg-slate-950 border-b border-white/[0.06]">
+            <img
+              src={module.image}
+              alt={`Interface do módulo ${module.name} no SGAD`}
+              className="w-full h-auto max-h-[min(50vh,420px)] sm:max-h-[min(55vh,480px)] object-contain object-top mx-auto block"
+            />
+          </div>
+          <div className="p-6 sm:p-8 pb-8">
+            <h2 id="module-detail-title" className="text-2xl sm:text-3xl font-bold text-white mb-4 pr-12">
+              {module.name}
+            </h2>
+            <p className="text-slate-300 text-base leading-relaxed">{module.desc}</p>
+            <p className="mt-6 text-sm text-slate-500 border-t border-white/[0.06] pt-6">
+              Captura de tela real do SGAD. Clique fora ou pressione Esc para fechar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Modules() {
+  const [detailModule, setDetailModule] = useState(null);
+
   return (
     <section id="modulos" className="relative bg-slate-950 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-5">
@@ -348,28 +414,42 @@ function Modules() {
               Mais de 75 funcionalidades documentadas em um único ambiente. Um ticket vira tarefa, o WhatsApp alimenta o
               CRM e o Ad cruza dados de todos os módulos.
             </p>
+            <p className="mt-3 text-slate-500 text-sm">Clique em um módulo para ver a interface em destaque e o detalhamento.</p>
           </div>
         </FadeIn>
+
+        {detailModule && <ModuleDetailModal module={detailModule} onClose={() => setDetailModule(null)} />}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((m, i) => (
             <FadeIn key={m.name} delay={i * 0.06}>
-              <article className="group flex flex-col h-full rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setDetailModule(m)}
+                className="group flex flex-col h-full w-full text-left rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.15] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-900/80 border-b border-white/[0.06]">
                   <div className="absolute top-0 left-0 right-0 h-1 z-10" style={{ backgroundColor: m.color }} aria-hidden />
                   <img
                     src={m.image}
-                    alt={`Captura do módulo ${m.name} no SGAD`}
+                    alt=""
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     loading="lazy"
                     decoding="async"
                   />
+                  <span className="absolute bottom-2 right-2 px-2 py-1 rounded-md bg-slate-950/75 text-slate-200 text-xs font-medium border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    Ver detalhes
+                  </span>
                 </div>
                 <div className="p-5 sm:p-6 flex flex-col flex-1">
-                  <h3 className="text-white font-bold text-lg mb-2">{m.name}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed flex-1">{m.desc}</p>
+                  <h3 className="text-white font-bold text-lg mb-2 group-hover:text-blue-200 transition-colors">{m.name}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed flex-1 line-clamp-4">{m.desc}</p>
+                  <span className="mt-4 text-sm font-semibold text-blue-400 group-hover:text-blue-300 inline-flex items-center gap-1">
+                    Abrir detalhamento
+                    <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                  </span>
                 </div>
-              </article>
+              </button>
             </FadeIn>
           ))}
         </div>
