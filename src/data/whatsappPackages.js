@@ -1,4 +1,4 @@
-/** Planos de mensagens — WhatsApp Business API oficial (META), cobrados à parte da assinatura SGAD. */
+/** Planos de mensagens — WhatsApp Business API oficial (META), cobrados à parte da assinatura SGUAD. */
 
 export const WHATSAPP_MESSAGE_PLANS = [
   {

@@ -4,7 +4,7 @@
  * Variáveis na Vercel:
  *   RESEND_API_KEY — obrigatório para envio por e-mail
  *   LEAD_NOTIFY_EMAIL — destino (padrão: contato@afsoftwares.com.br)
- *   RESEND_FROM_EMAIL — remetente verificado, ex. "SGAD <onboarding@resend.dev>"
+ *   RESEND_FROM_EMAIL — remetente verificado, ex. "SGUAD <onboarding@resend.dev>"
  */
 
 function escapeHtml(s) {
@@ -47,13 +47,13 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = (process.env.LEAD_NOTIFY_EMAIL || "contato@afsoftwares.com.br").trim();
-  const from = (process.env.RESEND_FROM_EMAIL || "SGAD Site <onboarding@resend.dev>").trim();
+  const from = (process.env.RESEND_FROM_EMAIL || "SGUAD Site <onboarding@resend.dev>").trim();
 
   if (!apiKey) {
     return res.status(503).json({ error: "Envio por e-mail não configurado (RESEND_API_KEY)." });
   }
 
-  const html = `<p>Novo lead pelo site SGAD (demonstração).</p>
+  const html = `<p>Novo lead pelo site SGUAD (demonstração).</p>
 <p><strong>Nome:</strong> ${escapeHtml(name)}</p>
 <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
 <p><strong>Telefone:</strong> ${escapeHtml(phone)}</p>`;
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       from,
       to: [to],
       reply_to: email,
-      subject: "Novo lead SGAD — demonstração (site)",
+      subject: "Novo lead SGUAD — demonstração (site)",
       html,
     }),
   });

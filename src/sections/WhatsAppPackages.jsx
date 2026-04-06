@@ -15,7 +15,7 @@ export function WhatsAppPackagesPanel() {
           <h3 className="text-2xl font-extrabold text-white sm:text-3xl md:text-4xl">Pacotes de mensagens</h3>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-400 sm:text-lg">
             Limites de <strong className="font-semibold text-slate-300">aberturas de conversa</strong> e{" "}
-            <strong className="font-semibold text-slate-300">disparos</strong> para o módulo WhatsApp do SGAD.
+            <strong className="font-semibold text-slate-300">disparos</strong> para o módulo WhatsApp do SGUAD.
             Faturados à parte da mensalidade da plataforma.
           </p>
         </div>
@@ -89,7 +89,7 @@ export function WhatsAppPackagesPanel() {
         </div>
 
         <p className="mt-8 text-center text-xs text-slate-500">
-          Limites e políticas de faturamento seguem as regras da Meta e do contrato do SGAD. Valores e condições
+          Limites e políticas de faturamento seguem as regras da Meta e do contrato do SGUAD. Valores e condições
           comerciais confirmados com a equipe.
         </p>
       </div>

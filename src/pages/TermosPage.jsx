@@ -12,7 +12,7 @@ export function TermosPage() {
           <h1 className="text-3xl font-extrabold text-white">Termos de uso</h1>
           <p className="mt-6 leading-relaxed text-slate-400">
             Esta é uma <strong className="text-slate-300">página provisória</strong>. Substitua pelo texto jurídico
-            definitivo dos Termos de Uso do SGAD e da A&amp;F Softwares, revisado por advogado.
+            definitivo dos Termos de Uso do SGUAD e da A&amp;F Softwares, revisado por advogado.
           </p>
           <Link
             to="/"

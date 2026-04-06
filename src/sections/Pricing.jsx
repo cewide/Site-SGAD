@@ -66,7 +66,7 @@ export function Pricing() {
             </span>
             <h3 className="mb-2 flex items-center gap-2 pr-24 text-lg font-bold text-white">
               <Check className="text-emerald-400" size={20} />
-              SGAD — tudo incluído
+              SGUAD — tudo incluído
             </h3>
             <p className="mb-4 text-sm font-medium text-sky-300/90">
               Tudo incluído por menos que uma única ferramenta do mercado.

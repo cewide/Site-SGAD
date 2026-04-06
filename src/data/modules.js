@@ -98,7 +98,7 @@ export const MODULES = [
     color: "#06B6D4",
     imageAlt: "Painel do assistente IA Ad com insights e consumo de tokens",
     summary:
-      "Assistente SGAD: saúde operacional, consumo de tokens, insights, fluxos gerados por IA e resumos.",
+      "Assistente SGUAD: saúde operacional, consumo de tokens, insights, fluxos gerados por IA e resumos.",
     bullets: [
       "Score de saúde operacional (0–100)",
       "Monitoramento de tokens, chamadas e custo",

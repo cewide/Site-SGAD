@@ -1,7 +1,7 @@
-import logo from "../assets/logo-sgad.png";
+import logo from "../assets/logo-sguad.png";
 
 const DEFAULT_ALT =
-  "Logotipo SGAD — plataforma all-in-one de gestão empresarial pela A&F Softwares";
+  "Logotipo SGUAD — plataforma all-in-one de gestão empresarial pela A&F Softwares";
 
 export function Logo({ size = 36, className = "", alt = DEFAULT_ALT }) {
   return (

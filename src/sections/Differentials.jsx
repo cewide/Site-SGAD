@@ -19,7 +19,7 @@ export function Differentials() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">Diferenciais</p>
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">Por que o SGAD?</h2>
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">Por que o SGUAD?</h2>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {DIFFERENTIALS.map((d) => {

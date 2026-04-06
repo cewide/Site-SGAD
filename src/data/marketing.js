@@ -9,7 +9,7 @@ export const COMPETITORS = [
 
 export const FAQS = [
   {
-    q: "O SGAD substitui mesmo todas essas ferramentas?",
+    q: "O SGUAD substitui mesmo todas essas ferramentas?",
     a: "Sim. Integra Scrumban, help desk, CRM, WhatsApp (API META), IA (Ad), comunicação, administração e cadastro central num só sistema, sem atalhos frágeis só com API.",
   },
   {
@@ -33,8 +33,8 @@ export const FAQS = [
     a: "Suporte por chat e WhatsApp, Wiki integrada e assistente Ad para dúvidas operacionais.",
   },
   {
-    q: "Meus dados estão seguros no SGAD?",
-    a: "Sim. O SGAD conta com criptografia, permissões granulares por usuário, logs de auditoria, backups automáticos e conformidade com a LGPD. Você controla quem acessa o quê, com rastreamento completo de ações.",
+    q: "Meus dados estão seguros no SGUAD?",
+    a: "Sim. O SGUAD conta com criptografia, permissões granulares por usuário, logs de auditoria, backups automáticos e conformidade com a LGPD. Você controla quem acessa o quê, com rastreamento completo de ações.",
   },
 ];
 

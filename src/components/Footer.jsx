@@ -12,8 +12,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <Logo size={36} alt="Logotipo SGAD — marca da plataforma de gestão da A&F Softwares" />
-              <span className="text-lg font-bold text-white">SGAD</span>
+              <Logo size={36} alt="Logotipo SGUAD — marca da plataforma de gestão da A&F Softwares" />
+              <span className="text-lg font-bold text-white">SGUAD</span>
             </div>
             <p className="text-sm leading-relaxed text-slate-400">
               Plataforma all-in-one para gestão empresarial

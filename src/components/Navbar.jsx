@@ -42,7 +42,7 @@ export function Navbar() {
           }}
         >
           <Logo size={36} />
-          <span className="text-xl font-bold tracking-tight">SGAD</span>
+          <span className="text-xl font-bold tracking-tight">SGUAD</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

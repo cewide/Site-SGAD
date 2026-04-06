@@ -13,7 +13,7 @@ const DEFAULT_NUMBER = "551146731054"; // +55 11 4673-1054
 export const WHATSAPP_DISPLAY = "+55 (11) 4673-1054";
 
 const DEFAULT_MESSAGE =
-  "Olá! Vim pelo site do SGAD e gostaria de agendar uma demonstração ou falar com um consultor.";
+  "Olá! Vim pelo site do SGUAD e gostaria de agendar uma demonstração ou falar com um consultor.";
 
 function digitsOnly(s) {
   return String(s || "").replace(/\D/g, "");
@@ -36,7 +36,7 @@ export const CONTACT_EMAIL =
  * Usa sempre o número configurado (VITE_WHATSAPP_NUMBER ou padrão), para a mensagem incluir os dados do lead.
  */
 export function buildLeadWhatsAppUrl(name, email, phone) {
-  const text = `Olá! Preenchi o formulário no site do SGAD e quero uma demonstração.
+  const text = `Olá! Preenchi o formulário no site do SGUAD e quero uma demonstração.
 
 Nome: ${name}
 E-mail: ${email}
