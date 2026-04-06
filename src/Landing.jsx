@@ -6,6 +6,7 @@ import { Hero } from "./sections/Hero.jsx";
 import { Modules } from "./sections/Modules.jsx";
 import { Differentials } from "./sections/Differentials.jsx";
 import { Pricing } from "./sections/Pricing.jsx";
+import { WhatsAppPackages } from "./sections/WhatsAppPackages.jsx";
 import { FAQ } from "./sections/FAQ.jsx";
 import { CTA } from "./sections/CTA.jsx";
 
@@ -21,6 +22,7 @@ export default function Landing() {
         <Modules onOpenModule={setModule} />
         <Differentials />
         <Pricing />
+        <WhatsAppPackages />
         <FAQ />
         <CTA />
       </main>

@@ -4,6 +4,7 @@ const links = [
   ["#modulos", "Módulos"],
   ["#diferenciais", "Diferenciais"],
   ["#precos", "Preços"],
+  ["#pacotes-whatsapp", "WhatsApp"],
   ["#faq", "FAQ"],
 ];
 
