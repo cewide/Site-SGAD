@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo.jsx";
-import { SIGNUP_URL } from "../config.js";
+import { WHATSAPP_DEMO_URL } from "../config.js";
 
 const nav = [
   ["#modulos", "Módulos"],
@@ -42,12 +42,12 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href={SIGNUP_URL}
+            href={WHATSAPP_DEMO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="ml-1 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:shadow-emerald-500/40"
           >
-            Teste grátis
+            Agendar demo
           </a>
         </nav>
 
@@ -71,13 +71,13 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href={SIGNUP_URL}
+              href={WHATSAPP_DEMO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 py-3 text-center text-sm font-semibold text-white"
               onClick={() => setMenu(false)}
             >
-              Teste grátis
+              Agendar demo
             </a>
           </div>
         </div>

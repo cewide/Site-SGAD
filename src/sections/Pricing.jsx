@@ -1,6 +1,6 @@
 import { Check, X } from "lucide-react";
 import { COMPETITORS } from "../data/marketing.js";
-import { SIGNUP_URL } from "../config.js";
+import { WHATSAPP_DEMO_URL, WHATSAPP_DISPLAY } from "../config.js";
 
 function minTotal(list) {
   return list.reduce((acc, row) => {
@@ -80,14 +80,16 @@ export function Pricing() {
             </ul>
             <div className="mt-auto shrink-0">
               <a
-                href={SIGNUP_URL}
+                href={WHATSAPP_DEMO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 py-4 text-center text-lg font-bold text-white shadow-lg shadow-emerald-500/20 transition hover:shadow-emerald-500/40"
               >
-                Começar teste grátis
+                Agendar demonstração
               </a>
-              <p className="mt-3 text-center text-xs text-slate-500">Sem cartão · Cancele quando quiser</p>
+              <p className="mt-3 text-center text-xs text-slate-500">
+                WhatsApp · {WHATSAPP_DISPLAY} · A&amp;F Softwares
+              </p>
             </div>
           </div>
         </div>

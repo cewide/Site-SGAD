@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Logo } from "../components/Logo.jsx";
-import { SIGNUP_URL } from "../config.js";
+import { WHATSAPP_DEMO_URL } from "../config.js";
 
 export function Hero() {
   return (
@@ -31,12 +31,12 @@ export function Hero() {
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href={SIGNUP_URL}
+            href={WHATSAPP_DEMO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-emerald-500/25 transition hover:-translate-y-0.5 hover:shadow-emerald-500/40"
           >
-            Comece grátis
+            Agendar demonstração
             <ArrowRight size={20} />
           </a>
           <a
@@ -48,7 +48,7 @@ export function Hero() {
         </div>
 
         <p className="mt-8 text-sm text-slate-500">
-          9 módulos por <span className="font-semibold text-emerald-400">R$ 97/mês</span> · Sem fidelidade · Teste grátis
+          9 módulos por <span className="font-semibold text-emerald-400">R$ 97/mês</span> · Sem fidelidade · Fale com um consultor
         </p>
       </div>
     </section>
