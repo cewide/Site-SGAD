@@ -23,6 +23,7 @@ export function Navbar() {
   }, []);
 
   const link = "text-sm font-medium text-slate-300 transition hover:text-blue-400";
+  const linkPrecos = "text-sm font-medium text-emerald-400 transition hover:text-emerald-300";
 
   return (
     <header
@@ -38,7 +39,7 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map(([href, label]) => (
-            <a key={href} href={href} className={link}>
+            <a key={href} href={href} className={href === "#precos" ? linkPrecos : link}>
               {label}
             </a>
           ))}
@@ -67,7 +68,12 @@ export function Navbar() {
         <div className="border-t border-white/10 bg-slate-950/98 px-5 py-4 backdrop-blur-md md:hidden">
           <div className="flex flex-col gap-3">
             {nav.map(([href, label]) => (
-              <a key={href} href={href} className={link} onClick={() => setMenu(false)}>
+              <a
+                key={href}
+                href={href}
+                className={href === "#precos" ? linkPrecos : link}
+                onClick={() => setMenu(false)}
+              >
                 {label}
               </a>
             ))}

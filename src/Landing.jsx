@@ -3,10 +3,10 @@ import { Navbar } from "./components/Navbar.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { ModuleModal } from "./components/ModuleModal.jsx";
 import { Hero } from "./sections/Hero.jsx";
+import { SocialProof } from "./sections/SocialProof.jsx";
 import { Modules } from "./sections/Modules.jsx";
 import { Differentials } from "./sections/Differentials.jsx";
 import { Pricing } from "./sections/Pricing.jsx";
-import { WhatsAppPackages } from "./sections/WhatsAppPackages.jsx";
 import { FAQ } from "./sections/FAQ.jsx";
 import { CTA } from "./sections/CTA.jsx";
 
@@ -19,10 +19,10 @@ export default function Landing() {
       <Navbar />
       <main>
         <Hero />
+        <SocialProof />
         <Modules onOpenModule={setModule} />
         <Differentials />
         <Pricing />
-        <WhatsAppPackages />
         <FAQ />
         <CTA />
       </main>

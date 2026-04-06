@@ -32,6 +32,10 @@ export const FAQS = [
     q: "E se eu precisar de ajuda?",
     a: "Suporte por chat e WhatsApp, Wiki integrada e assistente Ad para dúvidas operacionais.",
   },
+  {
+    q: "Meus dados estão seguros no SGAD?",
+    a: "Sim. O SGAD conta com criptografia, permissões granulares por usuário, logs de auditoria, backups automáticos e conformidade com a LGPD. Você controla quem acessa o quê, com rastreamento completo de ações.",
+  },
 ];
 
 /** icon: chave para o mapa de ícones Lucide em Differentials.jsx */

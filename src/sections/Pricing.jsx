@@ -1,6 +1,8 @@
-import { Check, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Check, ChevronDown, X } from "lucide-react";
 import { COMPETITORS } from "../data/marketing.js";
 import { WHATSAPP_DEMO_URL, WHATSAPP_DISPLAY } from "../config.js";
+import { WhatsAppPackagesPanel } from "./WhatsAppPackages.jsx";
 
 function minTotal(list) {
   return list.reduce((acc, row) => {
@@ -10,11 +12,21 @@ function minTotal(list) {
 }
 
 export function Pricing() {
+  const [waOpen, setWaOpen] = useState(false);
   const total = minTotal(COMPETITORS);
   const fmt = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
+  useEffect(() => {
+    function syncHash() {
+      if (window.location.hash === "#pacotes-whatsapp") setWaOpen(true);
+    }
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, []);
+
   return (
-    <section id="precos" className="bg-slate-950 py-24 sm:py-32">
+    <section id="precos" className="scroll-mt-24 bg-slate-900/60 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-sky-400">Preços</p>
@@ -50,13 +62,15 @@ export function Pricing() {
 
           <div className="relative flex h-full min-h-[28rem] flex-col overflow-hidden rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 to-sky-500/10 p-6 sm:min-h-[32rem] sm:p-8">
             <span className="absolute right-0 top-0 rounded-bl-xl bg-emerald-500 px-3 py-1 text-xs font-bold text-white">
-              Recomendado
+              Mais popular
             </span>
             <h3 className="mb-2 flex items-center gap-2 pr-24 text-lg font-bold text-white">
               <Check className="text-emerald-400" size={20} />
               SGAD — tudo incluído
             </h3>
-            <p className="mb-4 text-sm text-slate-400">9 módulos + IA + suporte</p>
+            <p className="mb-4 text-sm font-medium text-sky-300/90">
+              Tudo incluído por menos que uma única ferramenta do mercado.
+            </p>
             <div className="mb-2 flex items-baseline gap-1">
               <span className="text-5xl font-extrabold sm:text-6xl">R$ 97</span>
               <span className="text-slate-400">/mês</span>
@@ -64,13 +78,18 @@ export function Pricing() {
             <p className="mb-6 text-sm font-medium text-emerald-400">
               Economize mais de R$ {fmt(total - 97)}/mês em relação a ferramentas separadas
             </p>
-            <ul className="mb-6 min-h-0 flex-1 space-y-2 text-sm text-slate-300">
+            <p className="mb-3 text-sm font-semibold text-white">9 módulos incluídos</p>
+            <ul className="mb-4 min-h-0 flex-1 space-y-2 text-sm text-slate-300">
               {[
-                "Todos os módulos",
-                "Assistente Ad (IA)",
-                "WhatsApp Business (mensagens conforme pacote)",
-                "CRM com funil",
-                "Sem fidelidade",
+                "Scrumban",
+                "Help Desk",
+                "WhatsApp Business",
+                "CRM Completo",
+                "Análises e Gamificação",
+                "IA Nativa (Ad)",
+                "Comunicação",
+                "Admin e Segurança",
+                "Cadastro Central",
               ].map((t) => (
                 <li key={t} className="flex gap-2">
                   <Check className="mt-0.5 shrink-0 text-emerald-400" size={16} />
@@ -78,6 +97,9 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
+            <p className="mb-6 text-xs text-slate-400 sm:text-sm">
+              Sem fidelidade · Suporte incluído · Teste gratuito
+            </p>
             <div className="mt-auto shrink-0">
               <a
                 href={WHATSAPP_DEMO_URL}
@@ -93,9 +115,32 @@ export function Pricing() {
             </div>
           </div>
         </div>
-        <p className="mt-8 text-center text-sm text-slate-500">
-          * Pacotes de mensagens WhatsApp cobrados à parte conforme o volume.
-        </p>
+
+        <div id="pacotes-whatsapp" className="scroll-mt-24 mt-10 rounded-2xl border border-white/10 bg-slate-900/40">
+          <button
+            type="button"
+            onClick={() => setWaOpen((v) => !v)}
+            className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/[0.04] sm:px-6 sm:py-5"
+            aria-expanded={waOpen}
+          >
+            <span>
+              <span className="block text-base font-semibold text-white sm:text-lg">Ver pacotes de mensagens WhatsApp</span>
+              <span className="mt-1 block text-sm text-slate-500">
+                Cobrança à parte conforme volume · API oficial META
+              </span>
+            </span>
+            <ChevronDown
+              size={22}
+              className={`shrink-0 text-emerald-400 transition-transform ${waOpen ? "rotate-180" : ""}`}
+              aria-hidden
+            />
+          </button>
+          {waOpen ? (
+            <div className="border-t border-white/10 px-5 pb-8 pt-2 sm:px-6">
+              <WhatsAppPackagesPanel />
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );

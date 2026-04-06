@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
+import { ModuleImage } from "./ModuleImage.jsx";
 
 export function ModuleModal({ module, onClose }) {
   useEffect(() => {
@@ -46,11 +47,13 @@ export function ModuleModal({ module, onClose }) {
 
         <div className="overflow-y-auto">
           <div className="border-b border-white/10 bg-slate-950">
-            <img
-              src={module.image}
-              alt={`${module.name} no SGAD`}
-              className="mx-auto block max-h-[min(48vh,420px)] w-full object-contain object-top sm:max-h-[min(52vh,480px)]"
+            <ModuleImage
+              png={module.image}
+              webp={module.imageWebp}
+              alt={module.imageAlt}
+              loading="lazy"
               draggable={false}
+              className="mx-auto block max-h-[min(48vh,420px)] w-full object-contain object-top sm:max-h-[min(52vh,480px)]"
             />
           </div>
           <div className="p-6 sm:p-8">

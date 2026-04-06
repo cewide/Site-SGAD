@@ -6,7 +6,7 @@ export function FAQ() {
   const [iOpen, setIOpen] = useState(null);
 
   return (
-    <section id="faq" className="bg-slate-900/60 py-24 sm:py-32">
+    <section id="faq" className="scroll-mt-24 bg-slate-950 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-5">
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-sky-400">FAQ</p>

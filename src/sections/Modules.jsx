@@ -1,15 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { MODULES } from "../data/modules.js";
+import { ModuleImage } from "../components/ModuleImage.jsx";
 
 export function Modules({ onOpenModule }) {
   return (
-    <section id="modulos" className="bg-slate-950 py-24 sm:py-32">
+    <section id="modulos" className="scroll-mt-24 bg-slate-950 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">9 módulos integrados</p>
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">Tudo conectado. Tudo em um só lugar.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
-            Mais de 75 funcionalidades. Clique em um cartão para ver a captura de tela e o detalhe.
+            Mais de 75 funcionalidades nativas em 9 módulos integrados. Explore cada módulo para ver o sistema real.
           </p>
         </div>
 
@@ -23,9 +24,10 @@ export function Modules({ onOpenModule }) {
             >
               <div className="relative aspect-[16/10] shrink-0 overflow-hidden border-b border-white/10 bg-slate-900">
                 <div className="absolute inset-x-0 top-0 z-10 h-1" style={{ backgroundColor: m.color }} />
-                <img
-                  src={m.image}
-                  alt=""
+                <ModuleImage
+                  png={m.image}
+                  webp={m.imageWebp}
+                  alt={m.imageAlt}
                   className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
                   loading="lazy"
                   draggable={false}

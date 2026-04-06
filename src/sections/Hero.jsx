@@ -25,8 +25,27 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="mx-auto mb-10 max-w-2xl text-lg text-slate-400 sm:text-xl">
-          Projetos, suporte, CRM, WhatsApp, IA e gamificação em um único sistema. Pare de pagar por várias assinaturas.
+        <p className="mx-auto mb-4 max-w-2xl text-lg text-slate-400 sm:text-xl">
+          Substitua 6+ ferramentas por uma só plataforma — com IA nativa, por R$ 97/mês. Teste grátis, sem cartão de
+          crédito.
+        </p>
+
+        <a
+          href="#precos"
+          className="mb-6 inline-block text-sm text-emerald-400 underline underline-offset-4 transition hover:text-emerald-300"
+        >
+          A partir de R$97/mês — ver planos
+        </a>
+
+        <p className="mb-1 text-center text-base leading-none" aria-hidden>
+          <span className="inline-flex items-center justify-center gap-3 text-slate-500">
+            <span>🚀</span>
+            <span>🏢</span>
+            <span>👥</span>
+          </span>
+        </p>
+        <p className="mx-auto mb-6 max-w-2xl text-sm text-slate-500">
+          Para startups, PMEs e equipes em crescimento que precisam de organização sem complexidade.
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -43,13 +62,14 @@ export function Hero() {
             href="#modulos"
             className="rounded-xl border border-white/15 px-8 py-4 font-semibold text-slate-300 transition hover:bg-white/5"
           >
-            Ver módulos
+            Veja como funciona
           </a>
         </div>
 
-        <p className="mt-8 text-sm text-slate-500">
-          9 módulos por <span className="font-semibold text-emerald-400">R$ 97/mês</span> · Sem fidelidade · Fale com um consultor
+        <p className="mt-3 text-sm text-slate-500">
+          Demonstração gratuita de 15 min · Sem compromisso · Sem cartão de crédito
         </p>
+        <p className="mt-1 text-sm text-slate-500">Sem fidelidade · Fale com um consultor</p>
       </div>
     </section>
   );

@@ -26,3 +26,7 @@ const envMessage = import.meta.env.VITE_WHATSAPP_MESSAGE?.trim() || DEFAULT_MESS
 /** Link wa.me com número e mensagem (ou URL completa via env). */
 export const WHATSAPP_DEMO_URL =
   envUrl || `https://wa.me/${envPhone}?text=${encodeURIComponent(envMessage)}`;
+
+/** E-mail institucional exibido no rodapé. Opcional: VITE_CONTACT_EMAIL */
+export const CONTACT_EMAIL =
+  import.meta.env.VITE_CONTACT_EMAIL?.trim() || "contato@afsoftwares.com.br";

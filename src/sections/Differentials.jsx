@@ -12,7 +12,10 @@ const ICON_MAP = {
 
 export function Differentials() {
   return (
-    <section id="diferenciais" className="bg-slate-900/60 py-24 sm:py-32">
+    <section
+      id="diferenciais"
+      className="bg-gradient-to-b from-slate-950 via-blue-950/20 to-slate-950 py-24 sm:py-32"
+    >
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">Diferenciais</p>

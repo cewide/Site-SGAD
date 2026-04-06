@@ -1,34 +1,84 @@
 import { Logo } from "./Logo.jsx";
+import { CONTACT_EMAIL, WHATSAPP_DISPLAY, WHATSAPP_DEMO_URL } from "../config.js";
 
-const links = [
-  ["#modulos", "Módulos"],
-  ["#diferenciais", "Diferenciais"],
-  ["#precos", "Preços"],
-  ["#pacotes-whatsapp", "WhatsApp"],
-  ["#faq", "FAQ"],
-];
+const colTitle = "mb-4 text-xs font-bold uppercase tracking-wider text-slate-500";
+const linkClass = "text-sm text-slate-400 transition hover:text-white";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slate-950 py-12">
+    <footer className="border-t border-white/10 bg-slate-950 py-14">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-2">
-            <Logo size={32} />
-            <span className="font-bold">SGAD</span>
-            <span className="ml-2 text-sm text-slate-500">A&amp;F Softwares</span>
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <div className="mb-4 flex items-center gap-2">
+              <Logo size={36} />
+              <span className="text-lg font-bold text-white">SGAD</span>
+            </div>
+            <p className="text-sm leading-relaxed text-slate-400">
+              Plataforma all-in-one para gestão empresarial
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
-            {links.map(([href, t]) => (
-              <a key={href} href={href} className="transition hover:text-slate-300">
-                {t}
-              </a>
-            ))}
+
+          <div>
+            <p className={colTitle}>Produto</p>
+            <ul className="space-y-3">
+              <li>
+                <a href="#modulos" className={linkClass}>
+                  Módulos
+                </a>
+              </li>
+              <li>
+                <a href="#precos" className={linkClass}>
+                  Preços
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className={linkClass}>
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className={colTitle}>Empresa</p>
+            <ul className="space-y-3 text-sm text-slate-400">
+              <li className="font-medium text-slate-300">A&amp;F Softwares</li>
+              <li>
+                CNPJ: <span className="text-slate-500">[informar CNPJ]</span>
+              </li>
+              <li>São Paulo, SP</li>
+            </ul>
+          </div>
+
+          <div>
+            <p className={colTitle}>Contato</p>
+            <ul className="space-y-3 text-sm text-slate-400">
+              <li>
+                <a href={WHATSAPP_DEMO_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  WhatsApp · {WHATSAPP_DISPLAY}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <p className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-slate-600">
-          © {new Date().getFullYear()} A&amp;F Softwares. Todos os direitos reservados.
-        </p>
+
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-slate-600 sm:flex-row">
+          <p>© {new Date().getFullYear()} A&amp;F Softwares. Todos os direitos reservados.</p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href="/termos-de-uso.html" className="transition hover:text-slate-400">
+              Termos de uso
+            </a>
+            <a href="/politica-de-privacidade.html" className="transition hover:text-slate-400">
+              Política de privacidade
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

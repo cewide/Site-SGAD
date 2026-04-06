@@ -2,19 +2,18 @@ import { Check, MessageCircle } from "lucide-react";
 import { WHATSAPP_EXTRA_DISPAROS, WHATSAPP_MESSAGE_PLANS } from "../data/whatsappPackages.js";
 import { WHATSAPP_DEMO_URL } from "../config.js";
 
-export function WhatsAppPackages() {
+/** Conteúdo dos pacotes (usado dentro do acordeão em Preços). */
+export function WhatsAppPackagesPanel() {
   return (
-    <section id="pacotes-whatsapp" className="scroll-mt-24 bg-slate-900/40 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5">
-        <div className="mb-14 text-center">
+    <div className="pt-4">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium text-emerald-400">
             <MessageCircle size={14} className="text-[#25D366]" aria-hidden />
             API oficial META · WhatsApp Business
           </div>
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
-            Pacotes de mensagens
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-400">
+          <h3 className="text-2xl font-extrabold text-white sm:text-3xl md:text-4xl">Pacotes de mensagens</h3>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-400 sm:text-lg">
             Limites de <strong className="font-semibold text-slate-300">aberturas de conversa</strong> e{" "}
             <strong className="font-semibold text-slate-300">disparos</strong> para o módulo WhatsApp do SGAD.
             Faturados à parte da mensalidade da plataforma.
@@ -42,7 +41,7 @@ export function WhatsAppPackages() {
               ) : (
                 <span className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Entrada</span>
               )}
-              <h3 className="mb-6 text-2xl font-bold text-white">{plan.name}</h3>
+              <h4 className="mb-6 text-2xl font-bold text-white">{plan.name}</h4>
               <ul className="mb-8 flex flex-1 flex-col gap-3 text-sm text-slate-300">
                 {plan.features.map((line) => (
                   <li key={line} className="flex gap-3">
@@ -71,8 +70,8 @@ export function WhatsAppPackages() {
           ))}
         </div>
 
-        <div className="mt-16 rounded-2xl border border-white/10 bg-slate-950/60 p-6 sm:p-10">
-          <h3 className="mb-2 text-center text-xl font-bold text-white sm:text-2xl">Pacotes extras de disparos</h3>
+        <div className="mt-12 rounded-2xl border border-white/10 bg-slate-950/60 p-6 sm:p-10">
+          <h4 className="mb-2 text-center text-xl font-bold text-white sm:text-2xl">Pacotes extras de disparos</h4>
           <p className="mx-auto mb-8 max-w-xl text-center text-sm text-slate-400">
             Amplie o volume quando precisar — valores adicionais por pacote de disparos.
           </p>
@@ -89,11 +88,11 @@ export function WhatsAppPackages() {
           </div>
         </div>
 
-        <p className="mt-10 text-center text-xs text-slate-500">
+        <p className="mt-8 text-center text-xs text-slate-500">
           Limites e políticas de faturamento seguem as regras da Meta e do contrato do SGAD. Valores e condições
           comerciais confirmados com a equipe.
         </p>
       </div>
-    </section>
+    </div>
   );
 }
