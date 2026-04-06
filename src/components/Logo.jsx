@@ -1,10 +1,13 @@
 import logo from "../assets/logo-sgad.png";
 
-export function Logo({ size = 36, className = "" }) {
+const DEFAULT_ALT =
+  "Logotipo SGAD — plataforma all-in-one de gestão empresarial pela A&F Softwares";
+
+export function Logo({ size = 36, className = "", alt = DEFAULT_ALT }) {
   return (
     <img
       src={logo}
-      alt="SGAD"
+      alt={alt}
       width={size}
       height={size}
       className={`shrink-0 select-none object-contain ${className}`}

@@ -1,29 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-/** Em produção, configure o mesmo path no seu backend (ex.: serverless). */
-function leadApiMock() {
-  return {
-    name: "lead-api-mock",
-    configureServer(server) {
-      server.middlewares.use((req, res, next) => {
-        const url = req.url?.split("?")[0];
-        if (url === "/api/lead" && req.method === "POST") {
-          const chunks = [];
-          req.on("data", (c) => chunks.push(c));
-          req.on("end", () => {
-            res.setHeader("Content-Type", "application/json");
-            res.statusCode = 200;
-            res.end(JSON.stringify({ ok: true }));
-          });
-          return;
-        }
-        next();
-      });
-    },
-  };
-}
-
+/**
+ * SPA: o HTML inicial inclui JSON-LD, meta sociais, noscript com resumo e robots/sitemap em /public.
+ * Prerender estático completo (HTML = conteúdo React): avaliar `vite-prerender-plugin` ou
+ * `@prerenderer/rollup-plugin` quando houver suporte estável com React 19 no teu ambiente de build.
+ */
 export default defineConfig({
-  plugins: [react(), leadApiMock()],
+  plugins: [react()],
 });

@@ -118,10 +118,12 @@ export function Pricing() {
 
         <div id="pacotes-whatsapp" className="scroll-mt-24 mt-10 rounded-2xl border border-white/10 bg-slate-900/40">
           <button
+            id="pacotes-whatsapp-trigger"
             type="button"
             onClick={() => setWaOpen((v) => !v)}
             className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/[0.04] sm:px-6 sm:py-5"
             aria-expanded={waOpen}
+            aria-controls="pacotes-whatsapp-panel"
           >
             <span>
               <span className="block text-base font-semibold text-white sm:text-lg">Ver pacotes de mensagens WhatsApp</span>
@@ -135,11 +137,15 @@ export function Pricing() {
               aria-hidden
             />
           </button>
-          {waOpen ? (
-            <div className="border-t border-white/10 px-5 pb-8 pt-2 sm:px-6">
-              <WhatsAppPackagesPanel />
-            </div>
-          ) : null}
+          <div
+            id="pacotes-whatsapp-panel"
+            role="region"
+            aria-labelledby="pacotes-whatsapp-trigger"
+            aria-hidden={!waOpen}
+            className={`border-t border-white/10 px-5 pb-8 pt-2 sm:px-6 ${waOpen ? "" : "hidden"}`}
+          >
+            {waOpen ? <WhatsAppPackagesPanel /> : null}
+          </div>
         </div>
       </div>
     </section>

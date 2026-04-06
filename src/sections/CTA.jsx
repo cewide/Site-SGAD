@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Check, MessageCircle } from "lucide-react";
 import { Logo } from "../components/Logo.jsx";
-import { WHATSAPP_DEMO_URL, WHATSAPP_DISPLAY } from "../config.js";
+import { buildLeadWhatsAppUrl, WHATSAPP_DEMO_URL, WHATSAPP_DISPLAY } from "../config.js";
 
 const inputClass =
   "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20";
@@ -16,19 +16,45 @@ export function CTA() {
     setStatus("sending");
     const form = e.currentTarget;
     const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+
+    const payload = { name, email, phone };
+
+    const tryWhatsAppFallback = () => {
+      const url = buildLeadWhatsAppUrl(name, email, phone);
+      window.open(url, "_blank", "noopener,noreferrer");
+      setStatus("whatsapp");
+      form.reset();
+    };
 
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new URLSearchParams(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("Erro ao enviar");
-      setStatus("success");
-      form.reset();
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+        return;
+      }
+
+      if (res.status === 400) {
+        const j = await res.json().catch(() => ({}));
+        setStatus("idle");
+        setError(j.error || "Verifique os dados e tente novamente.");
+        return;
+      }
+
+      tryWhatsAppFallback();
     } catch {
-      setStatus("idle");
-      setError("Não foi possível enviar agora. Tente pelo WhatsApp ou mais tarde.");
+      tryWhatsAppFallback();
     }
   }
 
@@ -99,6 +125,11 @@ export function CTA() {
               {error ? <p className="text-sm text-amber-400">{error}</p> : null}
               {status === "success" ? (
                 <p className="text-sm text-emerald-400">Recebemos seus dados. Em breve entraremos em contato.</p>
+              ) : null}
+              {status === "whatsapp" ? (
+                <p className="text-sm text-emerald-400">
+                  Abrimos o WhatsApp com sua mensagem pré-preenchida — envie para concluir o pedido de demonstração.
+                </p>
               ) : null}
               <button
                 type="submit"

@@ -15,6 +15,6 @@ for (const f of files) {
   if (!f.endsWith(".png") || f.startsWith("_")) continue;
   const input = path.join(dir, f);
   const output = input.replace(/\.png$/i, ".webp");
-  await sharp(input).webp({ quality: 82 }).toFile(output);
+  await sharp(input).webp({ quality: 83 }).toFile(output);
   console.log("OK", path.relative(root, output));
 }

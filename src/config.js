@@ -30,3 +30,16 @@ export const WHATSAPP_DEMO_URL =
 /** E-mail institucional exibido no rodapé. Opcional: VITE_CONTACT_EMAIL */
 export const CONTACT_EMAIL =
   import.meta.env.VITE_CONTACT_EMAIL?.trim() || "contato@afsoftwares.com.br";
+
+/**
+ * WhatsApp com nome, e-mail e telefone (fallback se /api/lead falhar ou não existir em dev).
+ * Usa sempre o número configurado (VITE_WHATSAPP_NUMBER ou padrão), para a mensagem incluir os dados do lead.
+ */
+export function buildLeadWhatsAppUrl(name, email, phone) {
+  const text = `Olá! Preenchi o formulário no site do SGAD e quero uma demonstração.
+
+Nome: ${name}
+E-mail: ${email}
+Telefone: ${phone}`;
+  return `https://wa.me/${envPhone}?text=${encodeURIComponent(text)}`;
+}

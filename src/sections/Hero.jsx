@@ -31,7 +31,7 @@ export function Hero() {
         </p>
 
         <a
-          href="#precos"
+          href="/#precos"
           className="mb-6 inline-block text-sm text-emerald-400 underline underline-offset-4 transition hover:text-emerald-300"
         >
           A partir de R$97/mês — ver planos
@@ -59,7 +59,7 @@ export function Hero() {
             <ArrowRight size={20} />
           </a>
           <a
-            href="#modulos"
+            href="/#modulos"
             className="rounded-xl border border-white/15 px-8 py-4 font-semibold text-slate-300 transition hover:bg-white/5"
           >
             Veja como funciona

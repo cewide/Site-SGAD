@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo.jsx";
 import { WHATSAPP_DEMO_URL } from "../config.js";
 
 const nav = [
-  ["#modulos", "Módulos"],
-  ["#diferenciais", "Diferenciais"],
-  ["#precos", "Preços"],
-  ["#pacotes-whatsapp", "WhatsApp"],
-  ["#faq", "FAQ"],
+  ["/#modulos", "Módulos"],
+  ["/#diferenciais", "Diferenciais"],
+  ["/#precos", "Preços"],
+  ["/#pacotes-whatsapp", "WhatsApp"],
+  ["/#faq", "FAQ"],
 ];
 
 export function Navbar() {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
 
@@ -32,14 +34,24 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5">
-        <a href="#topo" className="flex items-center gap-2.5">
+        <Link
+          to="/"
+          className="flex items-center gap-2.5"
+          onClick={() => {
+            if (location.pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
           <Logo size={36} />
           <span className="text-xl font-bold tracking-tight">SGAD</span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map(([href, label]) => (
-            <a key={href} href={href} className={href === "#precos" ? linkPrecos : link}>
+            <a
+              key={href}
+              href={href}
+              className={href === "/#precos" ? linkPrecos : link}
+            >
               {label}
             </a>
           ))}
@@ -71,7 +83,7 @@ export function Navbar() {
               <a
                 key={href}
                 href={href}
-                className={href === "#precos" ? linkPrecos : link}
+                className={href === "/#precos" ? linkPrecos : link}
                 onClick={() => setMenu(false)}
               >
                 {label}

@@ -1,9 +1,9 @@
 import { useState, useCallback } from "react";
 import { Navbar } from "./components/Navbar.jsx";
 import { Footer } from "./components/Footer.jsx";
+import { FloatingWhatsApp } from "./components/FloatingWhatsApp.jsx";
 import { ModuleModal } from "./components/ModuleModal.jsx";
 import { Hero } from "./sections/Hero.jsx";
-import { SocialProof } from "./sections/SocialProof.jsx";
 import { Modules } from "./sections/Modules.jsx";
 import { Differentials } from "./sections/Differentials.jsx";
 import { Pricing } from "./sections/Pricing.jsx";
@@ -19,7 +19,6 @@ export default function Landing() {
       <Navbar />
       <main>
         <Hero />
-        <SocialProof />
         <Modules onOpenModule={setModule} />
         <Differentials />
         <Pricing />
@@ -27,6 +26,7 @@ export default function Landing() {
         <CTA />
       </main>
       <Footer />
+      <FloatingWhatsApp />
       {module ? <ModuleModal module={module} onClose={close} /> : null}
     </div>
   );
